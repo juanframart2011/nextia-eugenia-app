@@ -39,7 +39,7 @@
                                     <div class="input-group-prepend">
                                         <span id="span_email" class="icon_addon input-group-text"><i class="fas fa-envelope"></i></span>
                                     </div>
-                                    <input autocomplete="email" data-span="#span_email" type="email" class="form-control input-with-addon"  id="email" required >
+                                    <input autocomplete="email" data-span="#span_email" type="email" class="form-control input-with-addon" [(ngModel)]="email" id="email" required >
                                 </div>
                             </div>
                         </div>
@@ -50,7 +50,8 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-12" align="right">
-                                <button type="button" id="btn_send" class="btn eugenia-btn-primary btn-block">Enviar instrucciones</button>
+                                <button *ngIf="!validateRecovery" type="button" id="btn_send" class="btn eugenia-btn-primary btn-block" (click)="recoverPassword()">{{ buttonText }}</button>
+                                <button *ngIf="validateRecovery" type="button" id="btn_send" class="btn eugenia-btn-primary btn-block" disabled="true">{{ buttonText }} <div class="spinner-border" role="status"><span class="visually-hidden"></span></div></button>
                             </div>
                         </div>
                     </div>

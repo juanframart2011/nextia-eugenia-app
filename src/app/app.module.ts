@@ -12,6 +12,7 @@ import { HttpInterceptorService } from './http-interceptor';
 import { FormsModule } from '@angular/forms';
 import { RecoveryComponent } from './pages/auth/recovery/recovery.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { ChangePasswordComponent } from './pages/auth/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { RegisterComponent } from './pages/auth/register/register.component';
     LoginComponent,
     FooterComponent,
     RecoveryComponent,
-    RegisterComponent
+    RegisterComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -52,7 +52,7 @@ export class AuthService {
     const data = new URLSearchParams();
     data.set('email', email);
     
-    return this.http.post<any>(`/auth/recovery`, data.toString(), { headers }).pipe(
+    return this.http.post<any>(`/recover`, data.toString(), { headers }).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }
