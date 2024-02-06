@@ -34,6 +34,7 @@ export class LoginComponent {
             localStorage.setItem('name', response.name);
             localStorage.setItem('last_name', response.last_name);
             localStorage.setItem('rol', response.rol);
+            localStorage.setItem('no_department', response.no_department);
             this.authService.isAuthenticated = true;
             this.router.navigate(['/home']);
           },

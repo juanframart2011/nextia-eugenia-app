@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { RecoveryComponent } from './pages/auth/recovery/recovery.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ChangePasswordComponent } from './pages/auth/change-password/change-password.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { ChangePasswordComponent } from './pages/auth/change-password/change-pas
     FooterComponent,
     RecoveryComponent,
     RegisterComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
