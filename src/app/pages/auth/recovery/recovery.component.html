@@ -1,0 +1,61 @@
+<div class="row align-items-center">
+    <div class="col-12 login-container d-table">
+        <div class="row align-items-center" style="height: 100vh;">
+            <div class="col-12 col-sm-6 offset-sm-3">
+                <div class="jumbotron" style="background: white; border-radius: 20px;">
+                    <div id="loginbox" class="mr-sm-5 ml-sm-5 p-4">
+                        <div style="margin-left: -25px">
+                            <div style="text-align: center;"><img width="100%" src="/assets/img/eugenia-logo.png" /></div>
+                        </div>
+                        <hr class="my-4">
+                        <div style="text-align: center;">
+                            <h2>¿Olvidaste tu contraseña?</h2>
+                        </div>
+                        <div class="row">
+                            <div class=col-12>
+                                <div id="instructions-sent-alert" style="display:none;">
+                                    <br>
+                                    <div class="text-black p-2" style="border:1px solid #f5f5f5;border-left: 6px solid green;">
+                                        <h4>Hemos enviado a tu correo las instrucciones para restablecer tu contraseña.</h4>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class=col-12>
+                                <div id="invalid-credentials-alert" style="display:none;">
+                                    <br>
+                                    <div class="text-black p-2" style="border:1px solid #f5f5f5;border-left: 6px solid red;">
+                                        <h4>El correo no existe.</h4>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span id="span_email" class="icon_addon input-group-text"><i class="fas fa-envelope"></i></span>
+                                    </div>
+                                    <input autocomplete="email" data-span="#span_email" type="email" class="form-control input-with-addon"  id="email" required >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <span class="text-black">¿Ya tienes cuenta? <a class="home-link"  routerLink="/auth">Entrar aquí</a></span> 
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12" align="right">
+                                <button type="button" id="btn_send" class="btn eugenia-btn-primary btn-block">Enviar instrucciones</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
