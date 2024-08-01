@@ -49,7 +49,7 @@
       <table class="table mb-0 mb-md-3">
         <thead>
           <tr class="table-primary">
-            <th class="align-middle INN-tl-cell-rounded" scope="col">Nobre</th>
+            <th class="align-middle INN-tl-cell-rounded" scope="col">Nombre</th>
             <th class="align-middle d-none d-md-table-cell" scope="col">Entrada</th>
             <th class="align-middle d-none d-md-table-cell" scope="col">Expiración</th>
             <th class="align-middle d-none d-md-table-cell" scope="col">Feha de Creación</th>
@@ -58,7 +58,7 @@
           </tr>
         </thead>
         <tbody *ngIf="!loadingInvitations">
-          <ng-container *ngIf="invitations && invitations.length > 0; else noClients">
+          <ng-container *ngIf="invitations && invitations.length > 0; else noInvitations">
             <tr class="table" *ngFor="let invitation of invitations">
               <td class="text-primary" scope="row">{{ invitation.name }}</td>
               <td class="text-primary d-none d-md-table-cell" >{{ invitation.entry_date }}</td>
@@ -71,7 +71,7 @@
               </td>
             </tr>
           </ng-container>
-          <ng-template #noClients>
+          <ng-template #noInvitations>
             <tr>
               <td class="text-center" colspan="7">No Hay Invitaciones</td>
             </tr>
@@ -79,16 +79,16 @@
         </tbody>
         <tbody *ngIf="loadingInvitations">
             <tr>
-              <td class="text-center" colspan="7"><div class="spinner-border" role="status">
-                <span class="visually-hidden">Cargando Invitaciones...</span>
-              </div><br>
-              Cargando Invitaciones...</td>
+              <td class="text-center" colspan="7">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden"></span>
+                </div><br>
+                Cargando Invitaciones...
+              </td>
             </tr>
         </tbody>
-      </table>
-  
-    </div>
-      
+      </table>  
+    </div>      
     </div>
   
     <!-- LIST FOOTER -->
@@ -104,7 +104,7 @@
               <li class="page-item" *ngFor="let page of getPages()">
                 <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
               </li>
-              <li class="page-item" [class.disabled]="currentPage === totalPages()">
+              <li class="page-item" [class.disabled]="currentPage === totalPages">
                 <a class="page-link" (click)="nextPage()">Siguiente</a>
               </li>
             </ul>
@@ -112,6 +112,4 @@
         </div>
       </div>
     </div>
-    
-    <app-footer></app-footer>
 </div><!-- END MAIN CONTAINER -->
