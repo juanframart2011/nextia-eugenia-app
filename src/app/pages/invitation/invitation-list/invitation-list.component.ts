@@ -68,19 +68,36 @@ export class InvitationListComponent {
     return pages;
   }
 
-  previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
+  goToPage(page: number) {
+    this.currentPage = page;
   }
-  
+
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
     }
   }
-  
-  goToPage(page: number) {
-    this.currentPage = page;
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
+  }
+
+  openQrInNewTab(base64Data:string) {
+    // Crear un Blob a partir de los datos base64
+    const byteCharacters = atob(base64Data.split(',')[1]);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    const blob = new Blob([byteArray], { type: 'image/png' });
+
+    // Crear una URL de objeto
+    const objectURL = URL.createObjectURL(blob);
+
+    // Abrir la URL en una nueva pestaña
+    window.open(objectURL, '_blank');
   }
 }

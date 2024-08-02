@@ -1,0 +1,35 @@
+.success-message {
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px; 
+    text-align: center; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; 
+  }
+
+  .error-message {
+    background-color: #af4c4c; 
+    color: white; 
+    padding: 10px; 
+    text-align: center; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; 
+  }
+
+  .warning-message {
+    background-color: #e0d24d; 
+    color: white; 
+    padding: 10px; 
+    text-align: center; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; 
+  }

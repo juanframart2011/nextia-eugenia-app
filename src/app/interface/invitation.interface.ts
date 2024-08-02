@@ -1,6 +1,7 @@
 export interface Invitation{
     id:number;
     user_id:number;
+    qr:string;
     name:string;
     entry_date:string;
     expiration:string;

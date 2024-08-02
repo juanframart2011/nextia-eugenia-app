@@ -23,7 +23,7 @@
     
               <!-- FUNCTIONS BUTTONS -->
               <div class="col-12 col-lg-auto ms-0 ms-lg-2 mt-2 mt-lg-0">
-                <a routerLink="/cliente-crear" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-file-earmark-plus me-2"></i>Agregar</a>
+                <a routerLink="/invitation/create" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-file-earmark-plus me-2"></i>Agregar</a>
               </div>
               
               <!-- SEPARATION BAR -->
@@ -50,6 +50,7 @@
         <thead>
           <tr class="table-primary">
             <th class="align-middle INN-tl-cell-rounded" scope="col">Nombre</th>
+            <th class="align-middle INN-tl-cell-rounded" scope="col">QR</th>
             <th class="align-middle d-none d-md-table-cell" scope="col">Entrada</th>
             <th class="align-middle d-none d-md-table-cell" scope="col">Expiración</th>
             <th class="align-middle d-none d-md-table-cell" scope="col">Feha de Creación</th>
@@ -61,6 +62,9 @@
           <ng-container *ngIf="invitations && invitations.length > 0; else noInvitations">
             <tr class="table" *ngFor="let invitation of invitations">
               <td class="text-primary" scope="row">{{ invitation.name }}</td>
+              <td class="text-primary" scope="row">
+                <a href="#" (click)="openQrInNewTab(invitation.qr)"><img src="{{ invitation.qr }}" alt="{{ invitation.name }}"></a>
+              </td>
               <td class="text-primary d-none d-md-table-cell" >{{ invitation.entry_date }}</td>
               <td class="text-primary d-none d-md-table-cell" >{{ invitation.expiration }}</td>
               <td class="text-primary d-none d-md-table-cell" >{{ invitation.created_at }}</td>
