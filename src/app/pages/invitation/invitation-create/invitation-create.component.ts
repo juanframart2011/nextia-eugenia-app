@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { InvitationCreate } from 'src/app/interface/invitation-create.interface';
+import { Invitation } from 'src/app/interface/invitation.interface';
 import { InvitationService } from 'src/app/services/invitation.service';
 
 @Component({
@@ -16,6 +17,8 @@ export class InvitationCreateComponent {
     expiration:''
   };
 
+  invitationCreated!: Invitation;
+
   showSuccessMessage:boolean = false;
   successMessage:string = '';
   showErrorMessage:boolean = false;
@@ -24,6 +27,7 @@ export class InvitationCreateComponent {
   warningMessage:string = '';
   isSubmitForm:boolean = false;
   buttonSubmitText:string = 'Guardar';
+  isModalOpen: boolean = false;
 
   constructor(
     private invitationService: InvitationService, private router: Router
@@ -33,6 +37,12 @@ export class InvitationCreateComponent {
 
   cancel(){
     this.router.navigate(['/invitation']);
+  }
+
+  closeModal() {
+    // Oculta el modal
+    this.isModalOpen = false;
+    document.body.style.overflow = ''; // Opcional: restaurar el desplazamiento de la página
   }
 
   create() {
@@ -52,6 +62,7 @@ export class InvitationCreateComponent {
 
     this.invitationService.create(this.invitationCreate).subscribe(
       (response) => {
+        this.invitationCreated = response;
         this.showSuccessMessage = true;
         this.successMessage = 'la invitación fue creada exitosamente';
         this.isSubmitForm = false;
@@ -64,6 +75,9 @@ export class InvitationCreateComponent {
           entry_date:'',
           expiration:''
         };
+
+        this.isModalOpen = true;
+        document.body.style.overflow = 'hidden';
       },
       (error) => {
         console.error('Error al crear la invitación:', error);
@@ -77,5 +91,20 @@ export class InvitationCreateComponent {
           }, 10000);
       }
     );
+  }
+
+  openQrInNewTab(base64Data:string) {
+    
+    var byteCharacters = atob(base64Data.split(',')[1]);
+    var byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    var byteArray = new Uint8Array(byteNumbers);
+    var blob = new Blob([byteArray], { type: 'image/png' });
+
+    var objectURL = URL.createObjectURL(blob);
+
+    window.open(objectURL, '_blank');
   }
 }

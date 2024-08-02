@@ -105,12 +105,6 @@ export class InvitationListComponent {
     }
   }
 
-  previousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
-  }
-
   openQrInNewTab(base64Data:string) {
     
     var byteCharacters = atob(base64Data.split(',')[1]);
@@ -124,5 +118,11 @@ export class InvitationListComponent {
     var objectURL = URL.createObjectURL(blob);
 
     window.open(objectURL, '_blank');
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+    }
   }
 }
