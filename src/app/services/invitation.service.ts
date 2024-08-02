@@ -37,14 +37,14 @@ export class InvitationService {
 
   detail(invitation: any): Observable<any> {
 
-    return this.http.post(`/invitations`, invitation).pipe(
+    return this.http.get(`/invitations/${invitation}` ).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }
 
-  edit(invitation: any): Observable<any> {
+  update(invitation: any, invitationId:number): Observable<any> {
 
-    return this.http.post(`/invitations`, invitation).pipe(
+    return this.http.patch(`/invitations/${invitationId}`, invitation).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }

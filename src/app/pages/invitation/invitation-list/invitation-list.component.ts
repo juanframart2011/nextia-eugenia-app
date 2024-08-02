@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Invitation } from 'src/app/interface/invitation.interface';
 import { InvitationService } from 'src/app/services/invitation.service';
 
@@ -19,7 +20,7 @@ export class InvitationListComponent {
   limit:number = 10;
   totalPages:number = 0;
 
-  constructor(private invitationService:InvitationService,private datePipe: DatePipe){}
+  constructor(private invitationService:InvitationService,private datePipe: DatePipe, private router: Router){}
 
   private _getList(){
     this.invitationService.getAll( this.currentPage, this.limit ).subscribe((data)=>{
@@ -85,7 +86,9 @@ export class InvitationListComponent {
     }
   }
 
-  detail(invitationId:number){}
+  detail(invitationId:number){
+    this.router.navigate(['/invitation/edit', invitationId]);
+  }
 
   getPages(): number[] {
     const pages = [];
