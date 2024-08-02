@@ -4,8 +4,9 @@ import { LoginComponent } from './pages/auth/login/login.component';
 import { RecoveryComponent } from './pages/auth/recovery/recovery.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ChangePasswordComponent } from './pages/auth/change-password/change-password.component';
-import { HomeComponent } from './pages/home/home.component';
 import { AuthGuard } from './auth.guard';
+import { InvitationListComponent } from './pages/invitation/invitation-list/invitation-list.component';
+import { InvitationCreateComponent } from './pages/invitation/invitation-create/invitation-create.component';
 
 const routes: Routes = [
   { 
@@ -19,7 +20,15 @@ const routes: Routes = [
       { path: 'register', component: RegisterComponent },      
     ]
   },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'home', component: InvitationListComponent, canActivate: [AuthGuard] },
+  {
+    path: 'invitation',
+    children: [
+      { path: '', component: InvitationListComponent, canActivate: [AuthGuard] },
+      { path: 'create', component: InvitationCreateComponent, canActivate: [AuthGuard] },
+      { path: 'edit/:id', component: InvitationCreateComponent, canActivate: [AuthGuard] },      
+    ]
+  },
   { path: 'recuperar/:token', component: ChangePasswordComponent },
 ];
 

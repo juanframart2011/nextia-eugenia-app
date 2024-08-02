@@ -1,0 +1,122 @@
+<!-- MAIN CONTAINER -->
+<div class="d-flex flex-column INN-h100vh">
+    <!-- FIXED SPACE FOR MAIN NAV BAR-->
+    <div class="container">
+      <div class="row my-3 py-3">
+      </div>
+    </div>
+    
+    <div class="container">
+        <div class="card card-body INN-form justify-content-center mt-4">
+          <div class="row">
+      
+            <!-- FORM TITLE -->
+            <div class="col-12 col-lg-5">
+              <h4 class="card-title lg-3 mb-lg-1 text-body-secondary">
+                <i class="bi bi-envelope me-2 INN-button-function-icon INN-color-brand-primary"></i>Invitaciones
+              </h4>
+            </div>
+            
+      
+            <!-- FUNCTIONS BUTTONS -->
+            <div class="col ms-2 m-lg-0 d-lg-flex justify-content-lg-end align-items-lg-center">
+              <div class="col-12 col-lg-auto ms-0 mx-lg-2 mt-2 mt-lg-0"><button (click)="cancel()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-x-circle me-2"></i>Cancelar</button></div>
+              <div class="col-12 col-lg-auto ms-0 mx-lg-2 mt-2 mt-lg-0">
+                  <button [disabled]="isSubmitForm" (click)="submitForm()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-save me-2"></i>{{ buttonSubmitText }}</button>
+              </div>
+              <!-- BUSCAR -->
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+      <!-- FORM CONTENT -->
+      <div class="container pe-6">
+        <div class="card card-body INN-form justify-content-center mt-2">
+          <form class="needs-validation" novalidate>
+            <div class="row g-3">
+              
+              <!-- FIELD -->
+              <div class="col-md-3">
+                <label for="name" class="form-label">Nombre de Invitado</label>
+                <input type="text" class="form-control" id="name" name="name" [(ngModel)]="invitationCreate.name" required>
+                <div class="invalid-feedback">Valor válido es requerido.
+                </div>
+              </div>
+              
+              <!-- SPACER -->
+              <div class="col-md-1 m-0 p-0">
+              </div>
+      
+              <!-- FIELD -->
+              <div class="col-md-8">
+                <label for="entry_date" class="form-label">fecha de entrada</label>
+                <input type="datetime-local" class="form-control" id="entry_date" name="entry_date" [(ngModel)]="invitationCreate.entry_date" required>
+                <div class="invalid-feedback">Valor válido es requerido.
+                </div>
+              </div>
+      
+              <!-- BAR -->
+              <hr class="mt-4 mb-0">
+      
+              <div class="col-md-8">
+                <label for="expiration" class="form-label">Fecha de caducidad de la invitación</label>
+                <input type="datetime-local" class="form-control" id="expiration" name="expiration" [(ngModel)]="invitationCreate.expiration" required>
+                <div class="invalid-feedback">Valor válido es requerido.
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      
+    <!-- FORM FOOTER -->
+    <div class="container">
+      <div class="card card-body INN-form justify-content-center mt-2">
+          <div class="row">
+          
+          <!-- FUNCTIONS BUTTONS -->
+          <div class="col ms-2 m-lg-0 d-lg-flex justify-content-lg-end align-items-lg-center">
+              <div class="col-12 col-lg-auto ms-0 mx-lg-2 mt-2 mt-lg-0">
+                  <button (click)="cancel()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-x-circle me-2"></i>Cancelar</button>
+              </div>
+              <div class="col-12 col-lg-auto ms-0 mx-lg-2 mt-2 mt-lg-0">
+                  <button [disabled]="isSubmitForm" (click)="submitForm()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-save me-2"></i>{{ buttonSubmitText }}</button>
+              </div>
+              <!-- BUSCAR -->
+          </div>    
+          </div>
+      </div>
+    </div>
+
+    <div class="success-message" *ngIf="showSuccessMessage">{{ successMessage }}</div>
+    <div class="error-message" *ngIf="showErrorMessage">{{ errorMessage }}</div>
+    <div class="warning-message" *ngIf="showWarningMessage">{{ warningMessage }}</div>
+</div><!-- END MAIN CONTAINER -->
+
+
+<!-- Modal -->
+<div class="modal fade" [ngClass]="{ 'show': isModalOpen }" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" [style.display]="isModalOpen ? 'block' : 'none'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Invitación Creada</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Aquí irán los datos dinámicos -->
+        <p *ngIf="invitationCreated">
+          Nombre: {{ invitationCreated.name }} <br>
+          Fecha Entrada: {{ invitationCreated.entry_date | dateFormat }} <br>
+          Fecha de Caducidad: {{ invitationCreated.expiration | dateFormat }} <br>
+          QR:<br>
+          <a href="#" (click)="openQrInNewTab(invitationCreated.qr)"><img src="{{ invitationCreated.qr }}" alt="{{ invitationCreated.name }}"></a>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>

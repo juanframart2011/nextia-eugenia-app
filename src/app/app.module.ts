@@ -13,8 +13,10 @@ import { FormsModule } from '@angular/forms';
 import { RecoveryComponent } from './pages/auth/recovery/recovery.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
 import { ChangePasswordComponent } from './pages/auth/change-password/change-password.component';
-import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { InvitationListComponent } from './pages/invitation/invitation-list/invitation-list.component';
+import { InvitationCreateComponent } from './pages/invitation/invitation-create/invitation-create.component';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RecoveryComponent,
     RegisterComponent,
     ChangePasswordComponent,
-    HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    InvitationListComponent,
+    InvitationCreateComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,
