@@ -65,10 +65,18 @@
               <td class="text-primary" scope="row">
                 <a href="#" (click)="openQrInNewTab(invitation.qr)"><img src="{{ invitation.qr }}" alt="{{ invitation.name }}"></a>
               </td>
-              <td class="text-primary d-none d-md-table-cell" >{{ invitation.entry_date }}</td>
-              <td class="text-primary d-none d-md-table-cell" >{{ invitation.expiration }}</td>
-              <td class="text-primary d-none d-md-table-cell" >{{ invitation.created_at }}</td>
-              <td class="text-primary d-none d-md-table-cell" >{{ invitation.updated_at }}</td>
+              <td class="text-primary d-none d-md-table-cell" >
+                {{ invitation.entry_date | dateFormat }}
+              </td>
+              <td class="text-primary d-none d-md-table-cell" >
+                {{ invitation.expiration | dateFormat }}
+              </td>
+              <td class="text-primary d-none d-md-table-cell" >
+                {{ invitation.created_at | dateFormat }}
+              </td>
+              <td class="text-primary d-none d-md-table-cell" >
+                {{ invitation.updated_at | dateFormat }}
+              </td>
               <td class="px-0">
                 <button (click)="detail(invitation.id)" class="INN-function-button fs-6 p-0"><i class="bi bi-arrow-up-right-square-fill text-secondary"></i></button>
                 <button (click)="delete(invitation)" class="INN-function-button fs-6 p-0"><i class="bi bi-trash3-fill text-danger"></i></button>
@@ -96,7 +104,7 @@
     </div>
   
     <!-- LIST FOOTER -->
-    <div class="container">
+    <div class="container" *ngIf="getPages().length > 0">
       <div class="card card-body INN-form justify-content-center mt-2 mb-4">
         <div class="row">
           <!-- PAGINATION -->

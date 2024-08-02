@@ -16,6 +16,7 @@ import { ChangePasswordComponent } from './pages/auth/change-password/change-pas
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { InvitationListComponent } from './pages/invitation/invitation-list/invitation-list.component';
 import { InvitationCreateComponent } from './pages/invitation/invitation-create/invitation-create.component';
+import { DateFormatPipe } from './pipes/date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { InvitationCreateComponent } from './pages/invitation/invitation-create/
     ChangePasswordComponent,
     NavbarComponent,
     InvitationListComponent,
-    InvitationCreateComponent
+    InvitationCreateComponent,
+    DateFormatPipe
   ],
   imports: [
     BrowserModule,

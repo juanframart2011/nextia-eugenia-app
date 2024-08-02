@@ -16,12 +16,14 @@ export class InvitationCreateComponent {
     expiration:''
   };
 
-  showSuccessMessage = false;
-  successMessage = '';
-  showErrorMessage = false;
-  errorMessage = '';
-  showWarningMessage = false;
-  warningMessage = '';
+  showSuccessMessage:boolean = false;
+  successMessage:string = '';
+  showErrorMessage:boolean = false;
+  errorMessage:string = '';
+  showWarningMessage:boolean = false;
+  warningMessage:string = '';
+  isSubmitForm:boolean = false;
+  buttonSubmitText:string = 'Guardar';
 
   constructor(
     private invitationService: InvitationService, private router: Router
@@ -35,9 +37,13 @@ export class InvitationCreateComponent {
 
   create() {
     
+    this.buttonSubmitText = 'Guardando';
+    this.isSubmitForm = true;
     if (!this.invitationCreate.name || !this.invitationCreate.entry_date || !this.invitationCreate.expiration) {
       this.showWarningMessage = true;
       this.warningMessage = 'Todos los campos son obligatorios';
+      this.isSubmitForm = false;
+      this.buttonSubmitText = 'Guardar';
       setTimeout(() => {
         this.showWarningMessage = false;
       }, 5000);
@@ -48,6 +54,8 @@ export class InvitationCreateComponent {
       (response) => {
         this.showSuccessMessage = true;
         this.successMessage = 'la invitación fue creada exitosamente';
+        this.isSubmitForm = false;
+        this.buttonSubmitText = 'Guardar';
         setTimeout(() => {
           this.showSuccessMessage = false;
         }, 5000);
@@ -60,7 +68,9 @@ export class InvitationCreateComponent {
       (error) => {
         console.error('Error al crear la invitación:', error);
         this.showErrorMessage = true;
+        this.buttonSubmitText = 'Guardar';
 
+        this.isSubmitForm = false;
           this.errorMessage = error;
           setTimeout(() => {
             this.showErrorMessage = false;

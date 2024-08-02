@@ -22,7 +22,7 @@
             <div class="col ms-2 m-lg-0 d-lg-flex justify-content-lg-end align-items-lg-center">
               <div class="col-12 col-lg-auto ms-0 mx-lg-2 mt-2 mt-lg-0"><button (click)="cancel()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-x-circle me-2"></i>Cancelar</button></div>
               <div class="col-12 col-lg-auto ms-0 mx-lg-2 mt-2 mt-lg-0">
-                  <button (click)="create()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-save me-2"></i>Guardar</button>
+                  <button [disabled]="isSubmitForm" (click)="create()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-save me-2"></i>{{ buttonSubmitText }}</button>
               </div>
               <!-- BUSCAR -->
             </div>
@@ -82,7 +82,7 @@
                 <button (click)="cancel()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-x-circle me-2"></i>Cancelar</button>
             </div>
             <div class="col-12 col-lg-auto ms-0 mx-lg-2 mt-2 mt-lg-0">
-                <button (click)="create()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-save me-2"></i>Guardar</button>
+                <button [disabled]="isSubmitForm" (click)="create()" class="INN-function-button link-opacity-50-hover text-decoration-none link-secondary fs-6"><i class="bi bi-save me-2"></i>{{ buttonSubmitText }}</button>
             </div>
             <!-- BUSCAR -->
         </div>    
