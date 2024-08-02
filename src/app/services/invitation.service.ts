@@ -21,30 +21,30 @@ export class InvitationService {
     );
   }
 
-  create(user: any): Observable<any> {
+  create(invitation: any): Observable<any> {
 
-    return this.http.post(`/invitations`, user).pipe(
+    return this.http.post(`/invitations`, invitation).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }
 
-  delete(user: any): Observable<any> {
+  delete(invitation: any): Observable<any> {
 
-    return this.http.post(`/invitations`, user).pipe(
+    return this.http.delete(`/invitations/${invitation}`).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }
 
-  detail(user: any): Observable<any> {
+  detail(invitation: any): Observable<any> {
 
-    return this.http.post(`/invitations`, user).pipe(
+    return this.http.post(`/invitations`, invitation).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }
 
-  edit(user: any): Observable<any> {
+  edit(invitation: any): Observable<any> {
 
-    return this.http.post(`/invitations`, user).pipe(
+    return this.http.post(`/invitations`, invitation).pipe(
       catchError(this.sharedService.handleErrorResponse)
     );
   }

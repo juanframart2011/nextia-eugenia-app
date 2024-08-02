@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { Invitation } from 'src/app/interface/invitation.interface';
 import { InvitationService } from 'src/app/services/invitation.service';
@@ -5,7 +6,8 @@ import { InvitationService } from 'src/app/services/invitation.service';
 @Component({
   selector: 'app-invitation-list',
   templateUrl: './invitation-list.component.html',
-  styleUrls: ['./invitation-list.component.scss']
+  styleUrls: ['./invitation-list.component.scss'],
+  providers: [DatePipe]
 })
 export class InvitationListComponent {
 
@@ -17,7 +19,7 @@ export class InvitationListComponent {
   limit:number = 10;
   totalPages:number = 0;
 
-  constructor(private invitationService:InvitationService){}
+  constructor(private invitationService:InvitationService,private datePipe: DatePipe){}
 
   private _getList(){
     this.invitationService.getAll( this.currentPage, this.limit ).subscribe((data)=>{
@@ -42,6 +44,21 @@ export class InvitationListComponent {
     });
   }
 
+  private _sendDelete(id:number){
+
+    this.invitationService.delete(id).subscribe(
+      response => {
+        alert( 'invitación Eliminada exitosamente' );
+        setTimeout(() => {
+          this._getList();
+        }, 5000);
+      },
+      error => {
+        console.warn( '_sendDelete() => ', error );
+      }
+    );
+  }
+
   ngOnInit(){
     this._getList();
   }
@@ -56,7 +73,17 @@ export class InvitationListComponent {
     }
   }
 
-  delete(invitation:Invitation){}
+  delete(invitation:Invitation){
+
+    var entry_date = this.datePipe.transform(invitation.entry_date, 'yyyy-MM-dd HH:mm:ss');
+
+    var userConfirmed = confirm('¿Estás seguro de eliminar la invitación: '+invitation.name+', de entrada: '+entry_date+' ?');
+
+    if(userConfirmed) {
+      
+      this._sendDelete(invitation.id);
+    }
+  }
 
   detail(invitationId:number){}
 
